@@ -40,6 +40,9 @@ return array(
 				// the landing page for the requests to the domain.
                 'name' => 'home', // 'login', 
             ),
+             
+  
+
         ),
         /**
          * Access Control List
@@ -49,18 +52,51 @@ return array(
             'guest'   => null,
             'member'  => 'guest',
             'admin'  => 'member',
+            'superadmin'  => 'admin',
         ),
         'resources' => array(
             'allow' => array(
-				'CsnUser\Controller\Registration' => array(
-					'index'	=> 'guest',
-					'changePassword' => 'member',
-					'editProfile' => 'member',
-					'changeEmail' => 'member',
-					'forgottenPassword' => 'guest',
-					'confirmEmail' => 'guest',
-					'registrationSuccess' => 'guest',
+
+            	'Gestion\Controller\Article' => array(
+					
+					'index' => 'guest',
+					'add'	=> 'guest',
+					'edit'  => 'guest',	
+					'delete'=> 'guest',						
 				),
+                
+                'CsnUser\Controller\Admin' => array(
+                	'index' => 'admin',
+                	'create-user' => 'admin',
+                	'set-user-state' => 'admin',
+					
+					'edit-user'  => 'admin',
+
+                    
+					'delete-user'=> 'admin',	
+										
+				),
+
+				'CsnUser\Controller\Registration' => array(
+
+				'index'			                 	=> 'guest',
+				'editProfile'                      => 'member',
+				'change-email-success'			    => 'member',
+				'change-email'			            => 'member',
+				'change-password-success'		    => 'member',
+				'change-password'			        => 'member',
+				'change-security-question-success'  => 'member',
+                'change-security-question'          => 'member',
+                'confirm-email-change-password'     => 'guest',
+                'confirm-email-success'             => 'member',
+                'edit-profile'                      => 'member',
+                'password-change-success'           => 'member',
+                'registration-success'              => 'member',
+			    'reset-password'                    => 'guest',					
+					
+					
+				),
+
 				'CsnUser\Controller\Index' => array(
 					'login'   => 'guest',
 					'logout'  => 'member',
@@ -69,14 +105,7 @@ return array(
 				'CsnCms\Controller\Index' => array(
 						'all' => 'guest'
 				),
-				'CsnCms\Controller\Article' => array(
-					'view'	=> 'guest',
-					'vote'  => 'member',
-					'index' => 'admin',
-					'add'	=> 'admin',
-					'edit'  => 'admin',	
-					'delete'=> 'admin',						
-				),
+				
 				'CsnCms\Controller\Translation' => array(
 					'index' => 'admin',
 					'add'	=> 'admin',
